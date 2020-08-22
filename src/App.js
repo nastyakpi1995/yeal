@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import * as actions from './redux/actions';
+import WeatherInfo from './components/WeatherInfo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = ({ weatherLoading }) => {
+    debugger
+    return (
+        <div>
+            {weatherLoading ? (
+                <div>loading</div>
+            )
+                : <WeatherInfo />}
+        </div>
+    )
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    weatherLoading: state.getWeather.weatherLoading
+});
+
+export default connect(mapStateToProps, actions)(App);
