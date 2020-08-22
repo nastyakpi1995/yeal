@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/yeal/static/js/main.b288a09e.chunk.js",
-    "main.js.map": "/yeal/static/js/main.b288a09e.chunk.js.map",
+    "main.js": "/yeal/static/js/main.32d94439.chunk.js",
+    "main.js.map": "/yeal/static/js/main.32d94439.chunk.js.map",
     "runtime-main.js": "/yeal/static/js/runtime-main.3e90ab82.js",
     "runtime-main.js.map": "/yeal/static/js/runtime-main.3e90ab82.js.map",
     "static/js/2.5258922d.chunk.js": "/yeal/static/js/2.5258922d.chunk.js",
     "static/js/2.5258922d.chunk.js.map": "/yeal/static/js/2.5258922d.chunk.js.map",
     "index.html": "/yeal/index.html",
-    "precache-manifest.5809be35c1364c79ee4cf73973f06e5b.js": "/yeal/precache-manifest.5809be35c1364c79ee4cf73973f06e5b.js",
+    "precache-manifest.57a8566c8ad389b3de4a9ec293d1ad0f.js": "/yeal/precache-manifest.57a8566c8ad389b3de4a9ec293d1ad0f.js",
     "service-worker.js": "/yeal/service-worker.js",
     "static/js/2.5258922d.chunk.js.LICENSE.txt": "/yeal/static/js/2.5258922d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3e90ab82.js",
     "static/js/2.5258922d.chunk.js",
-    "static/js/main.b288a09e.chunk.js"
+    "static/js/main.32d94439.chunk.js"
   ]
 }

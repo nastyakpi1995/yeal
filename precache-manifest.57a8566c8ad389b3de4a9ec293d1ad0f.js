@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7e4a4cffb424b5a91a2b83313aa3d1a5",
+    "revision": "3266be3a2d50f94c62d84e39e0ea1387",
     "url": "/yeal/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/yeal/static/js/2.5258922d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3e52b7752fdb5d3f7bf4",
-    "url": "/yeal/static/js/main.b288a09e.chunk.js"
+    "revision": "1a3cda808f412fad583f",
+    "url": "/yeal/static/js/main.32d94439.chunk.js"
   },
   {
     "revision": "c29844f31d3951e31700",
