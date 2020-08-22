@@ -5,14 +5,14 @@ import * as actions from './redux/actions';
 import WeatherInfo from './components/WeatherInfo';
 
 const App = ({ weatherLoading }) => {
-    return (
-        <Global>
-            {weatherLoading ? (
+  return (
+      <Global>
+        {weatherLoading ? (
                 <div>loading</div>
             )
-                : <WeatherInfo />}
-        </Global>
-    )
+            : <WeatherInfo />}
+      </Global>
+  )
 }
 
 const Global = styled.div`
@@ -21,7 +21,7 @@ const Global = styled.div`
 `;
 
 const mapStateToProps = (state) => ({
-    weatherLoading: state.getWeather.weatherLoading
+  weatherLoading: state.getWeather.weatherLoading
 });
 
 export default connect(mapStateToProps, actions)(App);
