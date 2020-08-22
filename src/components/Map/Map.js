@@ -1427,7 +1427,7 @@ const Path = styled.path`
         return 'darkblue';
     }
     if (part === highlightedBodyPart) {
-        return 'white';
+        return 'blue';
     }
     return '';
 }};
