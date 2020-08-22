@@ -7,13 +7,12 @@ function* getWeatherSaga(country) {
 
   try {
     const res = yield call(() => weatherGet(country.data));
-debugger
+
     yield put({
       type: FETCH_TYPES.GET_SUCCESS,
       data: res,
     });
   } catch (e) {
-    debugger
     yield put({
       type: FETCH_TYPES.GET_FAIL,
       data: e.message,

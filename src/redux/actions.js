@@ -15,3 +15,8 @@ export const errorGetWeather = (data) => ({
   data,
 });
 
+
+export const setCurrentlyCountry = () => ({
+  type: FETCH_TYPES.SET_CURRENT_COUNTRY,
+});
+
