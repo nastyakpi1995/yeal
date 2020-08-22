@@ -1,18 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getCities } from 'countries-cities';
 import styled from 'styled-components';
 import * as actions from '../redux/actions';
+import '../App.scss';
 
 const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry }) => {
     const [IsModal, setIsModal] = useState(true);
-    const weather = currentCountry.weather.map(desc => desc.description);
     const [value, setValue] = useState('');
     const [arrayCity, setArrayCity] = useState(null);
-
     const [setStep, setSetStep] = useState(10);
+    const [arrayIcon, setArrayIcon] = useState([]);
 
     const isDisable = getCities(currentCountry.name) === 'undefined';
+
+    const temp = currentCountry.main.temp;
+
+    const wind = currentCountry.wind.speed;
+
+    useEffect(() => {
+        const icon = whithMainWeather('main').join('').toLowerCase();
+
+        if (icon === 'rain') {
+
+            setArrayIcon(arrayIcon.concat('cloud', 'sprinkles'));
+
+        } else if (currentCountry.main.humidity > 55) {
+
+            setArrayIcon(arrayIcon.concat('sprinkles', 'sprinkles', 'sprinkles'));
+        } else if (icon === 'clouds') {
+
+            setArrayIcon(arrayIcon.concat('cloud'))
+        } else if (icon === 'clear') {
+
+            setArrayIcon(arrayIcon.concat('sun'));
+        } else {
+
+            setArrayIcon(arrayIcon.concat(icon));
+        }
+    }, [])
+    const whithMainWeather = (weather) => {
+        return currentCountry.weather.map(item => item[weather])
+    }
+
 
     const handlerCancel = () => {
         setIsModal(false);
@@ -21,7 +51,7 @@ const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry })
 
     const changeSuggest = (el) => {
         const target = el.target.value;
-
+debugger
         const currentCity = currentCountry.name;
 
         const allCity = getCities(currentCity);
@@ -44,7 +74,7 @@ const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry })
     }
 
     const handleKey = (el) => {
-debugger
+
         const enterKey = el.key;
 
         if (enterKey === 'Enter') {
@@ -56,87 +86,90 @@ debugger
     return (
         <>
             {IsModal && <Backdrop onClick={handlerCancel}/>}
-            <Confirm imgWeather={weather}>
+            <Confirm imgWeather={whithMainWeather('weather')}>
                 <BodyModal>
                     <Button onClick={handlerCancel}>x</Button>
 
-                    <Title>{currentCountry.name}</Title>
-                    <ul>
-                        <li>{weather}</li>
-                        <li>{currentCountry.main.temp}</li>
-                        <li>{currentCountry.main.humidity}</li>
-                    </ul>
-                    <div>
-                        <Input
-                            disabled={isDisable}
-                            placeholder={`enter city please`}
-                            onKeyPress={handleKey}
-                            type="text" value={value}
-                            onChange={changeSuggest}
-                        />
-                        <ul>
-                            {arrayCity && arrayCity.slice(0, setStep).map((item) =>
-                                <li onClick={() => (handleSetValue(item))}>
-                                    {item}
-                                </li>
-                            )}
-                        </ul>
-                        <div>{arrayCity &&  <button onClick={() => setSetStep(setStep + 10)}>show more</button>}</div>
-                    </div>
+
+                    <main>
+                        <div className="device">
+                            <section>
+                                <div className="weather time-day active">
+                                    <div className="icon">
+                                        {arrayIcon && arrayIcon.map(icon => (
+                                            <i className={icon} />
+                                        ))}
+
+                                    </div>
+                                    <div className="content">
+                                        <h3>{currentCountry.name}</h3>
+                                        <div className="degrees">{temp}</div>
+                                        <div className="kelvin">{Math.round(temp + 273.15) }</div>
+                                        <div className="data">
+                                            <h2>{whithMainWeather('main')}</h2>
+                                            <div>Wind: {wind} mph</div>
+                                            <div>Humidity: {currentCountry.main.humidity}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <Title>{currentCountry.name}</Title>
+                                <div>
+                                    <Search>
+                                        <Input
+                                            disabled={isDisable}
+                                            placeholder='enter city please'
+                                            onKeyPress={handleKey}
+                                            type="text"
+                                            value={value}
+                                            onChange={changeSuggest}
+                                        />
+                                            {arrayCity && arrayCity.slice(0, setStep).map((item) =>
+                                                <option onClick={() => (handleSetValue(item))}>
+                                                    {item}
+                                                </option>
+                                            )}
+
+                                    </Search>
+
+                                    <div>{arrayCity &&  <button onClick={() => setSetStep(setStep + 10)}>show more</button>}</div>
+                                </div>
+                            </section>
+                        </div>
+                    </main>
                 </BodyModal>
             </Confirm>
         </>
     );
 };
 
+const Search = styled.div`
+  width:300px;
+  height:300px;
+`;
 
-  const Confirm = styled.div`
-  left: 30%;
-  top: 12%;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  z-index: 500;
-  padding: 0 40px;
-  background:  ${({ imgWeather }) => {
+const Input = styled.input`
+   width: 100%; 
+  margin-bottom: 10px; 
+  background: rgba(0,0,0,0.3);
+  border: none;
+  outline: none;
+  padding: 20px;
+  margin: 20px;
+  font-size: 13px;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 4px;
+  box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+  transition: box-shadow .5s ease;
+  text-align: center;
   
-    const weather = imgWeather[0];
-    
-    switch (imgWeather) {
-        case (weather === "overcast clouds"): {
-            return `url('Cloud.jpg')`
-        }
-        case (weather === "clear sky"): {
-            return `url('sky1200.jpg')`
-        }
+  &:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
 
-        case (weather === "scattered clouds"): {
-            return `url('scattered_clouds.jpg')`
-        }
-        case (weather ===  "broken clouds"): {
-            return `url('sky1200.jpg')`
-        }
-        case (weather === "few clouds"): {
-            return `url('broken clouds.jpg')` 
-        }
-
-        case (weather === 'light rain'): {
-            return `url('broken clouds.jpg')`
-        }
-            default: {
-                return '#6e6e84';
-            }
-    }
-}};
-  height: 450px;
-  width: 800px;
-  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  box-sizing: border-box;
-  transition: all 0.3s ease-out;
-  max-width: 590px;
+`;
 
 
+const Confirm = styled.div`
   @media (max-width: 801px) {
     left: 0;
     top: 0;
@@ -157,21 +190,17 @@ debugger
   }
 `;
 
-const Input = styled.input`
-  
-`;
-
-  const Button = styled.button`
+const Button = styled.button`
     position: absolute;
     top: 0;
     right: 0;
     background: transparent;
     border: none;
     font-size: 40px;
+    z-index: 999;
 `;
 
-
-  const BodyModal = styled.div`
+const BodyModal = styled.div`
 
 `;
 
@@ -188,6 +217,7 @@ const Input = styled.input`
 
 const Title = styled.h1`
       color: whitesmoke;
+      margin-left: 20px;
 `;
 
 const mapStateToProps = (state) => ({
