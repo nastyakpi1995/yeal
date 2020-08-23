@@ -23,26 +23,29 @@ const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry })
 
         if (icon === 'rain') {
 
-            setArrayIcon(arrayIcon.concat('cloud', 'sprinkles'));
+            setArrayIcon(arrayIcon[arrayIcon.length] = ('cloud'));
+            setArrayIcon(arrayIcon[arrayIcon.length] = ('sprinkles'));
 
-        } else if (currentCountry.main.humidity > 55) {
+        }  if (currentCountry.main.humidity > 55) {
+            setArrayIcon(arrayIcon[arrayIcon.length] = ('sprinkles'));
+            setArrayIcon(arrayIcon[arrayIcon.length] = ('sprinkles'));
+            setArrayIcon(arrayIcon[arrayIcon.length] = ('sprinkles'));
+        } if (icon === 'clouds') {
 
-            setArrayIcon(arrayIcon.concat('sprinkles', 'sprinkles', 'sprinkles'));
-        } else if (icon === 'clouds') {
+            setArrayIcon(
+                arrayIcon[arrayIcon.length] = ('cloud'));
+        } if (icon === 'clear') {
 
-            setArrayIcon(arrayIcon.concat('cloud'))
-        } else if (icon === 'clear') {
-
-            setArrayIcon(arrayIcon.concat('sun'));
+            setArrayIcon(arrayIcon.concat(['sun']));
         } else {
 
-            setArrayIcon(arrayIcon.concat(icon));
+            setArrayIcon(arrayIcon.concat([icon]));
         }
-    }, [])
+    }, []);
+
     const whithMainWeather = (weather) => {
         return currentCountry.weather.map(item => item[weather])
     }
-
 
     const handlerCancel = () => {
         setIsModal(false);
@@ -51,14 +54,14 @@ const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry })
 
     const changeSuggest = (el) => {
         const target = el.target.value;
-debugger
+
         const currentCity = currentCountry.name;
 
         const allCity = getCities(currentCity);
 
         setValue(target)
 
-        const arrayPlace = allCity.filter(item => {
+        const arrayPlace = allCity && allCity.filter(item => {
             const result = item.toLocaleLowerCase().includes(target)
 
             return result;
@@ -87,7 +90,7 @@ debugger
         <>
             {IsModal && <Backdrop onClick={handlerCancel}/>}
             <Confirm imgWeather={whithMainWeather('weather')}>
-                <BodyModal>
+                <div>
                     <Button onClick={handlerCancel}>x</Button>
 
 
@@ -96,8 +99,8 @@ debugger
                             <section>
                                 <div className="weather time-day active">
                                     <div className="icon">
-                                        {arrayIcon && arrayIcon.map(icon => (
-                                            <i className={icon} />
+                                        {arrayIcon && arrayIcon.map((icon, i) => (
+                                            <i className={icon} key={i} />
                                         ))}
 
                                     </div>
@@ -136,7 +139,7 @@ debugger
                             </section>
                         </div>
                     </main>
-                </BodyModal>
+                </div>
             </Confirm>
         </>
     );
@@ -198,10 +201,6 @@ const Button = styled.button`
     border: none;
     font-size: 40px;
     z-index: 999;
-`;
-
-const BodyModal = styled.div`
-
 `;
 
   const Backdrop = styled.div`

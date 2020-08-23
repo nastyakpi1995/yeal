@@ -4,7 +4,6 @@ import FETCH_TYPES from '../types';
 import { weatherGet } from '../../api/index';
 
 function* getWeatherSaga(country) {
-
   try {
     const res = yield call(() => weatherGet(country.data));
 

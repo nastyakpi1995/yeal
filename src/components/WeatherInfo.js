@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Map from './Map/Map';
 import styled from 'styled-components';
+
 import * as actions from '../redux/actions';
-import Slider from "./Slider";
+import Content from "./Content";
+import Map from './Map/Map';
 
 const WeatherInfo = ({ currentCountry, weatherErrors }) => {
     const res = currentCountry  !== null && weatherErrors === null;
@@ -12,7 +13,7 @@ const WeatherInfo = ({ currentCountry, weatherErrors }) => {
         <Wrap>
             <Map />
             {res ? (
-                   <Slider />
+                   <Content />
             ) : weatherErrors && <div>{weatherErrors}</div>}
 
         </Wrap>

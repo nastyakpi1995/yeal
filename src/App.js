@@ -3,25 +3,24 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import * as actions from './redux/actions';
 import Loader from 'react-loader-spinner';
+
 import WeatherInfo from './components/WeatherInfo';
 
-const App = ({ weatherLoading }) => {
-  return (
-      <Global>
+const App = ({ weatherLoading }) => (
+    <Global>
         {weatherLoading ? (
-                <LoaderContainer>
-                    <Loader
-                        type="Circles"
-                        color="#00BFFF"
-                        height={500}
-                        width={100}
-                    />
-                </LoaderContainer>
+            <LoaderContainer>
+                <Loader
+                    type="Circles"
+                    color="#00BFFF"
+                    height={500}
+                    width={100}
+                />
+            </LoaderContainer>
             )
             : <WeatherInfo />}
       </Global>
-  )
-}
+);
 
 const Global = styled.div`
     display: flex;
