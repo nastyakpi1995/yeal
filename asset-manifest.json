@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/yeal/static/css/main.e4ba8985.chunk.css",
-    "main.js": "/yeal/static/js/main.aa7cf03f.chunk.js",
-    "main.js.map": "/yeal/static/js/main.aa7cf03f.chunk.js.map",
+    "main.css": "/yeal/static/css/main.a8cbaac6.chunk.css",
+    "main.js": "/yeal/static/js/main.3536fbb3.chunk.js",
+    "main.js.map": "/yeal/static/js/main.3536fbb3.chunk.js.map",
     "runtime-main.js": "/yeal/static/js/runtime-main.3e90ab82.js",
     "runtime-main.js.map": "/yeal/static/js/runtime-main.3e90ab82.js.map",
-    "static/js/2.40f035e1.chunk.js": "/yeal/static/js/2.40f035e1.chunk.js",
-    "static/js/2.40f035e1.chunk.js.map": "/yeal/static/js/2.40f035e1.chunk.js.map",
+    "static/js/2.0ca23f5d.chunk.js": "/yeal/static/js/2.0ca23f5d.chunk.js",
+    "static/js/2.0ca23f5d.chunk.js.map": "/yeal/static/js/2.0ca23f5d.chunk.js.map",
     "index.html": "/yeal/index.html",
-    "precache-manifest.1ca8fea237296be5e7eda8d76448f0f7.js": "/yeal/precache-manifest.1ca8fea237296be5e7eda8d76448f0f7.js",
+    "precache-manifest.0ef6b24ecc89c3bb0139938f6ee50fb8.js": "/yeal/precache-manifest.0ef6b24ecc89c3bb0139938f6ee50fb8.js",
     "service-worker.js": "/yeal/service-worker.js",
-    "static/css/main.e4ba8985.chunk.css.map": "/yeal/static/css/main.e4ba8985.chunk.css.map",
-    "static/js/2.40f035e1.chunk.js.LICENSE.txt": "/yeal/static/js/2.40f035e1.chunk.js.LICENSE.txt"
+    "static/css/main.a8cbaac6.chunk.css.map": "/yeal/static/css/main.a8cbaac6.chunk.css.map",
+    "static/js/2.0ca23f5d.chunk.js.LICENSE.txt": "/yeal/static/js/2.0ca23f5d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3e90ab82.js",
-    "static/js/2.40f035e1.chunk.js",
-    "static/css/main.e4ba8985.chunk.css",
-    "static/js/main.aa7cf03f.chunk.js"
+    "static/js/2.0ca23f5d.chunk.js",
+    "static/css/main.a8cbaac6.chunk.css",
+    "static/js/main.3536fbb3.chunk.js"
   ]
 }
