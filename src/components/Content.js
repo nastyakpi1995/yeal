@@ -107,8 +107,8 @@ const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry })
                                     </div>
                                     <div className="content">
                                         <h3>{currentCountry.name}</h3>
-                                        <div className="degrees">{temp}</div>
-                                        <div className="kelvin">{Math.round(temp + 273.15) }</div>
+                                        <div className="degrees">{Math.round(temp - 273.15)}</div>
+                                        <div className="kelvin">{Math.round(temp)}</div>
                                         <div className="data">
                                             <h2>{whithMainWeather('main')}</h2>
                                             <div>Wind: {wind} mph</div>
