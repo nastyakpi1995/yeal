@@ -1428,7 +1428,7 @@ const Map = ({ chosenPart, requestGetWeather }) => {
 }
 
 const WrappSvg = styled.div`
-    width: 50%;
+    width: 100%;
 `;
 
 

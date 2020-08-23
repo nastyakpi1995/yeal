@@ -83,7 +83,7 @@ const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry })
 
         if (enterKey === 'Enter') {
             setArrayCity([]);
-            setValue(value);
+            requestGetWeather(value);
         }
     }
 
@@ -213,7 +213,6 @@ const Button = styled.button`
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
 `;
-
 
 const Title = styled.h1`
       color: whitesmoke;
