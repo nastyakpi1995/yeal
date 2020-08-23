@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getCities } from 'countries-cities';
 import styled from 'styled-components';
 import * as actions from '../redux/actions';
+
 import '../App.scss';
 
 const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry }) => {
