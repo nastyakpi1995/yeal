@@ -83,7 +83,7 @@ const WeatherInfo = ({ currentCountry, requestGetWeather, setCurrentlyCountry })
 
         if (enterKey === 'Enter') {
             setArrayCity([]);
-            setValue(value);
+            requestGetWeather(value);
         }
     }
 
